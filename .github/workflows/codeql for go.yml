@@ -2,10 +2,8 @@ name: "CodeQL Process for GoLang"
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "main" ]
+    branches: [ "staging" ]
+
   schedule:
     - cron: '18 20 * * 3'
 
@@ -62,17 +60,7 @@ jobs:
         cd back
         go build -v .
         
-
-    - name: Testeo de go
-      # No se han configurado tests todavía así que este paso no realiza nada momentaneamente
-      # y se ha deshabilitado. queda pendiente desarrollar pruebas y que sean ejecutadas en esta acción.
-      run: |
-        cd back
-        go test -v .
-        
     - name: Realizar análisis con CodeQL
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
-    #- name: NICO agrega tus weas aca de upload image y deploy aqui y en el otro yml
-      #uses: asdsdsdsdssd
