@@ -1,0 +1,7 @@
+
+
+
+    - name: Create .env file
+      run: |
+        echo "${{ secrets.ENV_FILE }}" > .env
+      working-directory: ${{ github.workspace }}
